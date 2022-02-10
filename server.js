@@ -32,11 +32,12 @@ const homebanner = require("./routes/homebanner");
 // const faqRoutes = require('./routes/faq')
 // const galleryRoute =  require('./routes/gallery')
 // const emailRoutes = require('./routes/emails');
-// const termRoutes = require('./routes/t&c');
+const termRoutes = require('./routes/t&c');
 // const paymentRoutes = require('./routes/payment');
 // const ordersRoutes =  require('./routes/Products/orders')
 // const appointmentRoutes =  require('./routes/appointment')
 const excel = require("./routes/excel");
+const subscriberRoutes =  require('./routes/subscriber')
 
 // app
 const app = express();
@@ -87,11 +88,13 @@ app.use("/api", homebanner);
 // app.use('/api',productCateg)
 // app.use('/api',galleryRoute)
 // app.use('/api',emailRoutes)
-// app.use('/api',termRoutes)
+app.use('/api',termRoutes)
 // app.use('/api',paymentRoutes)
 // app.use('/api',ordersRoutes);
 // app.use('/api',appointmentRoutes);
-app.use(excel);
+app.use('/api',excel);
+app.use('/api',subscriberRoutes);
+
 // port
 const port = process.env.PORT || 8000;
 app.use("/", (req, res) => {
