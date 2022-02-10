@@ -14,14 +14,14 @@ require("dotenv").config();
 // bring routes
 
 // const authRoutes = require('./routes/auth');
-const categoryRoutes = require('./routes/category')
+const categoryRoutes = require("./routes/category");
 // const productCateg = require('./routes/Products/productCateg')
 // const formRoutes  = require('./routes/form')
 // const userRoutes = require('./routes/user')
 const blogRoutes = require("./routes/blog");
 // const imageRoutes = require('./routes/image');
 // const about =  require('./routes/aboutus')
-const homebanner =  require('./routes/homebanner')
+const homebanner = require("./routes/homebanner");
 // const homeCateg =  require('./routes/HomePage/homeCateg')
 // const newArrival =  require('./routes/Products/newArrival')
 // const homeList =  require('./routes/HomePage/homeList')
@@ -36,6 +36,7 @@ const homebanner =  require('./routes/homebanner')
 // const paymentRoutes = require('./routes/payment');
 // const ordersRoutes =  require('./routes/Products/orders')
 // const appointmentRoutes =  require('./routes/appointment')
+const excel = require("./routes/excel");
 
 // app
 const app = express();
@@ -66,7 +67,7 @@ if (process.env.NODE_ENV === "development") {
 // routes middleware
 
 // app.use('/api', authRoutes);
-app.use('/api',  categoryRoutes );
+app.use("/api", categoryRoutes);
 // app.use('/api', formRoutes);
 // app.use('/api',userRoutes);
 app.use("/api", blogRoutes);
@@ -74,7 +75,7 @@ app.use("/api", blogRoutes);
 // app.use('/api',about);
 // app.use('/api',doctorRoute);
 // app.use('/api',testimonialRoute);
-app.use('/api', homebanner );
+app.use("/api", homebanner);
 // app.use('/api',homeCateg);
 // app.use('/api',newArrival);
 // app.use('/api',homeList);
@@ -90,6 +91,7 @@ app.use('/api', homebanner );
 // app.use('/api',paymentRoutes)
 // app.use('/api',ordersRoutes);
 // app.use('/api',appointmentRoutes);
+app.use(excel);
 // port
 const port = process.env.PORT || 8000;
 app.use("/", (req, res) => {
