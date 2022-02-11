@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 // bring routes
 
-// const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth');
 const categoryRoutes = require("./routes/category");
 // const productCateg = require('./routes/Products/productCateg')
 // const formRoutes  = require('./routes/form')
@@ -69,7 +69,7 @@ if (process.env.NODE_ENV === "development") {
 }
 // routes middleware
 
-// app.use('/api', authRoutes);
+app.use('/api', authRoutes);
 app.use("/api", categoryRoutes);
 // app.use('/api', formRoutes);
 // app.use('/api',userRoutes);
