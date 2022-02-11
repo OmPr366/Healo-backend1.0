@@ -39,6 +39,7 @@ const termRoutes = require('./routes/t&c');
 const excel = require("./routes/excel");
 const subscriberRoutes =  require('./routes/subscriber')
 const IntroPop =  require('./routes/introPop');
+const AboutCardRoutes =  require("./routes/aboutCard")
 
 // app
 const app = express();
@@ -96,6 +97,7 @@ app.use('/api',termRoutes)
 app.use('/api',excel);
 app.use('/api',subscriberRoutes);
 app.use('/api',IntroPop);
+app.use('/api',AboutCardRoutes);
 
 // port
 const port = process.env.PORT || 8000;

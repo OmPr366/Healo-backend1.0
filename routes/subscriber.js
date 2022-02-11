@@ -18,7 +18,11 @@ route.get("/download-excel", async (req, res) => {
         
       mongoXlsx.mongoData2Xlsx(responseData, model, function (err, data) {
         // res.send(data);
-        return res.download(data.fullPath);
+        res.download(data.fullPath);
+        // setTimeout(() => {
+          
+        // }, 4000);
+        
       });
     }
   });
