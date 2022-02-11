@@ -2,14 +2,13 @@ const HomeBanner =  require('../../models/homebanner');
 
 
 exports.create =  (req,res)=>{
-    const {pretitle, title, desc, photo} =  req.body;
-    if(!title || !desc || !photo) res.status(402).json({message:"Enter All Inputs"})
+    const {pretitle, title, photo} =  req.body;
+    if(!title|| !photo) res.status(402).json({message:"Enter All Inputs"})
 
     const homebanner  = new HomeBanner();
 
     homebanner.pretitle =  pretitle;
-    homebanner.title =  title;
-    homebanner.desc =  desc;
+    homebanner.title =  title;    
     homebanner.photo =  photo;
 
     homebanner.save().then((response,err)=>{

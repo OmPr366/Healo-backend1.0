@@ -13,17 +13,17 @@ const fs = require("fs");
 const { smartTrim } = require("../helpers/blog");
 
 exports.create = (req, res) => {
-  let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      return res.status(400).json({
-        error: "Image could not upload",
-      });
-    }
+  // let form = new formidable.IncomingForm();
+  // form.keepExtensions = true;
+  // form.parse(req, (err, fields, files) => {
+  //   if (err) {
+  //     return res.status(400).json({
+  //       error: "Image could not upload",
+  //     });
+  //   }
 
-    const { title, body, categories, photo } = fields;
-
+    const { title, body, photo } = req.body;
+    console.log(req.body)
     if (!title || !title.length) {
       return res.status(400).json({
         error: "title is required",
@@ -36,11 +36,11 @@ exports.create = (req, res) => {
       });
     }
 
-    if (!categories || categories.length === 0) {
-      return res.status(400).json({
-        error: "At least one category is required",
-      });
-    }
+    // if (!categories || categories.length === 0) {
+    //   return res.status(400).json({
+    //     error: "At least one category is required",
+    //   });
+    // }
 
     if (!photo || photo.length === 0) {
       return res.status(400).json({
@@ -52,12 +52,12 @@ exports.create = (req, res) => {
     blog.body = body;
     blog.excerpt = smartTrim(body, 320, " ", " ...");
     blog.slug = slugify(title).toLowerCase();
-    blog.mtitle = `${title} | ${process.env.APP_NAME}`;
+    blog.mtitle = `${title} | "Healo"`;
     blog.mdesc = stripHtml(body.substring(0, 160));
-    blog.postedBy = req.user._id;
+    blog.postedBy = "op";
     blog.photo = photo;
     // categories and tags
-    let arrayOfCategories = categories && categories.split(",");
+    // let arrayOfCategories = categories && categories.split(",");
 
     // if (files.photo) {
     //     if (files.photo.size > 10000000) {
@@ -81,32 +81,32 @@ exports.create = (req, res) => {
     blog.save((err, result) => {
       if (err) {
         return res.status(400).json({
-          error: errorHandler(err),
+          error: err,
         });
       }
-      // res.json(result);
-      Blog.findByIdAndUpdate(
-        result._id,
-        { $push: { categories: arrayOfCategories } },
-        { new: true }
-      ).exec((err, result) => {
-        if (err) {
-          return res.status(400).json({
-            error: errorHandler(err),
-          });
-        } else {
-          res.json(result);
-        }
-      });
+      return res.json(result);
+      // Blog.findByIdAndUpdate(
+      //   result._id,
+      //   { $push: { categories: arrayOfCategories } },
+      //   { new: true }
+      // ).exec((err, result) => {
+      //   if (err) {
+      //     return res.status(400).json({
+      //       error: errorHandler(err),
+      //     });
+      //   } else {
+      //     res.json(result);
+      //   }
+      // });
     });
-  });
+  // });
 };
 // list, listAllBlogsCategoriesTags, read, remove, update
 
 exports.list = (req, res) => {
   Blog.find({})
-    .populate("categories", "_id name slug")
-    .populate("postedBy", "_id name username photo")
+    // .populate("categories", "_id name slug")
+    // .populate("postedBy", "_id name username photo")
     .sort({ createdAt: -1 })
     .select("_id title slug excerpt categories photo  createdAt updatedAt")
     .exec((err, data) => {
@@ -159,9 +159,9 @@ exports.read = (req, res) => {
   const slug = req.params.slug.toLowerCase();
   Blog.findOne({ slug })
     // .select("-photo")
-    .populate("categories", "_id name slug")
+    // .populate("categories", "_id name slug")
 
-    .populate("postedBy", "_id name username photo")
+    // .populate("postedBy", "_id name username photo")
     .select(
       "_id title body slug mtitle mdesc photo categories  createdAt updatedAt"
     )

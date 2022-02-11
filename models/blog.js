@@ -46,12 +46,13 @@ const blogSchema = new mongoose.Schema({
         // required: true
         
     },
-    categories : [{type: ObjectId, ref: 'Category', required: true }],
+    categories : [{type: ObjectId, ref: 'Category' }],
   
     
     postedBy:{
-        type: ObjectId,
-        ref: 'User'
+        type:"String"
+        // type: ObjectId,
+        // ref: 'User'
     }
 }, {timestamps: true })
 
