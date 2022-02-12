@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const aboutHomeSchema = new mongoose.Schema(
+const aboutHeadSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -23,4 +23,4 @@ const aboutHomeSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Abouthome", aboutHomeSchema);
+module.exports = mongoose.model("AboutHead", aboutHeadSchema);
