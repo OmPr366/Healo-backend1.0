@@ -45,3 +45,33 @@ exports.create = async (req,res)=>{
         
     }
 }
+
+
+exports.getState =  async (req,res)=>{
+
+    try {
+        const response =  await IntroPop.findOne({_id:"6205e844cd1e11329da3c2e6"});
+        if(response)
+        {
+            res.send(response);
+        }
+    } catch (error) {
+        res.status(402).json({error})
+        
+    }
+}
+
+exports.updateState =  async (req,res)=>{
+    try {
+        const {state} =  req.body;
+        const response =  await  IntroPop.findByIdAndUpdate("6205e844cd1e11329da3c2e6",{ state },
+        {new:true})
+
+        if(response)
+        {
+            res.send(response);
+        }
+    } catch (error) {
+        res.status(402).json({error})
+    }
+}

@@ -25,6 +25,9 @@ const introSchema = new mongoose.Schema(
     image:{
         type:String
     },
+    state:{
+      type: Number
+    }
   },
   { timestamps: true }
 );
