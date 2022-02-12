@@ -16,6 +16,8 @@ route.put("/update-about-head", updateHead);
 // Send Message Otp
 route.post("/sendmessage", (req, res) => {
   const {number} =  req.body;
+  console.log(req.body);
+  console.log(number)
     const randomNumber =  Math.floor(1000 + Math.random() * 9000);
   const client = require("twilio")(
     "AC3feb8d85bf8d6522b61a83cdd81a33f7",

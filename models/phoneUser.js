@@ -6,12 +6,10 @@ const phoneUserSchema = new mongoose.Schema(
     username: {
       type: String,
       trim: true,
-      required: true,
       max: 32,
-      unique: true,
-      index: true,
       lowercase: true,
       default: "guest",
+
     },
     name: {
       type: String,
@@ -30,12 +28,9 @@ const phoneUserSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    isVerified: {
-      type: Boolean,
-    },
     profile: {
       type: String,
-      required: true,
+      // required: true,
     },
 
     salt: String,
@@ -58,10 +53,10 @@ const phoneUserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-googleUserSchema.methods = {
+phoneUserSchema.methods = {
   makeSalt: function () {
     return Math.round(new Date().valueOf() * Math.random) + "";
   },
 };
 
-module.exports = mongoose.model("PhoneUser", googleUserSchema);
+module.exports = mongoose.model("PhoneUser", phoneUserSchema);
