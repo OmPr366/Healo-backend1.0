@@ -199,30 +199,21 @@ exports.update = (req, res) => {
       });
     }
 
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
 
-    form.parse(req, (err, fields) => {
-      if (err) {
-        return res.status(400).json({
-          error: "Image could not upload",
-        });
-      }
 
-      let slugBeforeMerge = oldBlog.slug;
-      oldBlog = _.merge(oldBlog, fields);
-      oldBlog.slug = slugBeforeMerge;
-
-      const { body, desc, categories, photo } = fields;
+      const { body, title , photo } = fields;
 
       if (body) {
         oldBlog.excerpt = smartTrim(body, 320, " ", " ...");
         oldBlog.desc = stripHtml(body.substring(0, 160));
       }
-
-      if (categories) {
-        oldBlog.categories = categories.split(",");
+      if (title) {
+        oldBlog.title = title
       }
+
+      // if (categories) {
+      //   oldBlog.categories = categories.split(",");
+      // }
 
       if (photo) {
         oldBlog.photo = photo;
@@ -238,7 +229,6 @@ exports.update = (req, res) => {
         res.json(result);
       });
     });
-  });
 };
 
 exports.photo = (req, res) => {
