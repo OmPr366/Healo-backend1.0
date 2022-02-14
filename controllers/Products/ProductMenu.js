@@ -16,7 +16,7 @@ exports.getAll = async (req, res) => {
 // Adding Single Menu
 exports.addOne = async (req, res) => {
   try {
-    const { name, photo } = req.body;
+    const { name } = req.body;
     let slug = slugify(name).toLowerCase();
     const newProductCateg = new ProductMenu({
       name,
@@ -37,7 +37,7 @@ exports.addOne = async (req, res) => {
 exports.deleteOne = async (req, res) => {
   try {
     const id = req.params.id;
-    const response = ProductMenu.findByIdAndRemove(id, { new: true });
+    const response = await ProductMenu.findByIdAndRemove(id, { new: true });
     if (response) {
       return res.send(response);
     }

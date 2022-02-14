@@ -18,12 +18,13 @@ exports.getAll = async (req, res) => {
 // Adding Single category
 exports.addOne = async (req, res) => {
   try {
-    const { name, photo } = req.body;
+    const { name, photo , submenuId } = req.body;
   let slug = slugify(name).toLowerCase()
     const newProductCateg = new ProductCategory({
       name,
       photo,
-      slug
+      slug,
+      submenu: submenuId
     });
 
     const response = await newProductCateg.save();
@@ -46,6 +47,19 @@ exports.deleteOne = async (req, res) => {
     if (response) {
       return res.send(response);
     }
+  } catch (error) {
+    res.status(402).json({ error });
+  }
+};
+
+
+//  get all product sub menu find Product Menu
+
+exports.getBySubMenu = async (req, res) => {
+  try {
+    const subMenuId = req.params.id;
+    const response = await ProductCategory.find({ submenu: subMenuId });
+    if (response) res.send(response);
   } catch (error) {
     res.status(402).json({ error });
   }

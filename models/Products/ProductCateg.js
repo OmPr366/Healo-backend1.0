@@ -10,6 +10,7 @@ const ProductCategSchema = new mongoose.Schema(
     photo: {
       type: String,
     },
+    submenu: { type: ObjectId, ref: "ProductSubMenu" },
     slug : {
       type : String,
       unique : true,

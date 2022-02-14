@@ -1,11 +1,11 @@
 const ProductSubMenu = require("../../models/Products/ProductSubMenu");
-const ProductMenu = require("../../models/Products/ProductMenu");
 const slugify = require("slugify");
 
 // Getting All Sub Menu
 exports.getAll = async (req, res) => {
+  
   try {
-    const response = await ProductSubMenu.findOne({});
+    const response = await ProductSubMenu.find()
     if (response) res.send(response);
   } catch (error) {
     res.status(402).json({ error });

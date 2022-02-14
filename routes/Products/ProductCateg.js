@@ -1,9 +1,11 @@
 const express =  require('express')
 const route = express.Router();
-const {getAll,addOne,deleteOne} =  require('../../controllers/Products/ProductCateg')
+const {getAll,addOne,deleteOne,getBySubMenu} =  require('../../controllers/Products/ProductCateg')
 
-route.get("/get-all-product-category",getAll)
-route.get('/add-one-category',addOne)
-route.get('/remove-one-category/:id',deleteOne);
+route.get("/get-all-productcategory",getAll)
+route.post('/add-one-productcategory',addOne)
+route.delete('/remove-one-category/:id',deleteOne);
+route.get('/get-productcategory-by-menuid/:id',getBySubMenu)
+
 
 module.exports =  route;
