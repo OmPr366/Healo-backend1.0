@@ -40,7 +40,7 @@ exports.create = (req, res) => {
     //   return res.status(400).json({
     //     error: "At least one category is required",
     //   });
-    // }
+    // }  
 
     if (!photo || photo.length === 0) {
       return res.status(400).json({
