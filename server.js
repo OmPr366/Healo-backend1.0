@@ -41,6 +41,10 @@ const subscriberRoutes =  require('./routes/subscriber')
 const IntroPop =  require('./routes/introPop');
 const AboutCardRoutes =  require("./routes/aboutCard")
 const AboutHeadRoutes =  require("./routes/about/aboutHead")
+// Products
+const ProductCategRoutes =  require('./routes/Products/ProductCateg')
+const ProductMenuRoutes =  require('./routes/Products/ProductMenu')
+const ProductSubMenuRoutes =  require('./routes/Products/ProductSubMenu')
 
 // app
 const app = express();
@@ -100,6 +104,11 @@ app.use('/api',subscriberRoutes);
 app.use('/api',IntroPop);
 app.use('/api',AboutCardRoutes);
 app.use('/api',AboutHeadRoutes)
+
+// Products
+app.use('/api',ProductCategRoutes);
+app.use('/api',ProductMenuRoutes);
+app.use('/api',ProductSubMenuRoutes);
 
 // port
 const port = process.env.PORT || 8000;

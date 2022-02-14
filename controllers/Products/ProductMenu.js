@@ -1,10 +1,10 @@
-const ProductCategory = require("../../models/Products/ProductCateg");
-const slugify =  require('slugify')
+const ProductMenu = require("../../models/Products/ProductMenu");
+const slugify = require("slugify");
 
-// Getting all Product Category
+// Getting all Product Menu
 exports.getAll = async (req, res) => {
   try {
-    const response = await ProductCategory.find({});
+    const response = await ProductMenu.find({});
     if (response) {
       return res.send(response);
     }
@@ -13,17 +13,14 @@ exports.getAll = async (req, res) => {
   }
 };
 
-
-
-// Adding Single category
+// Adding Single Menu
 exports.addOne = async (req, res) => {
   try {
     const { name, photo } = req.body;
-  let slug = slugify(name).toLowerCase()
-    const newProductCateg = new ProductCategory({
+    let slug = slugify(name).toLowerCase();
+    const newProductCateg = new ProductMenu({
       name,
-      photo,
-      slug
+      slug,
     });
 
     const response = await newProductCateg.save();
@@ -36,13 +33,11 @@ exports.addOne = async (req, res) => {
   }
 };
 
-
-
-// Deleting Single Product category
+// Deleting Single Product Menu
 exports.deleteOne = async (req, res) => {
   try {
     const id = req.params.id;
-    const response = ProductCategory.findByIdAndRemove(id, { new: true });
+    const response = ProductMenu.findByIdAndRemove(id, { new: true });
     if (response) {
       return res.send(response);
     }
@@ -50,7 +45,6 @@ exports.deleteOne = async (req, res) => {
     res.status(402).json({ error });
   }
 };
-
 
 // Getting All Products in Single categ
 // exports.getOneWithProduct = async (req, res) => {
@@ -66,9 +60,3 @@ exports.deleteOne = async (req, res) => {
 //     res.status(402).json({ error });
 //   }
 // };
-
-
- 
- 
- 
-

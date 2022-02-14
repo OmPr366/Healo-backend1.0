@@ -7,10 +7,14 @@ const ProductCategSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    products: [{ type: ObjectId, ref: "Product" }],
     photo: {
       type: String,
     },
+    slug : {
+      type : String,
+      unique : true,
+      index: true
+  },
   },
   { timestamps: true }
 );
