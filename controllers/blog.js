@@ -108,7 +108,7 @@ exports.list = (req, res) => {
     // .populate("categories", "_id name slug")
     // .populate("postedBy", "_id name username photo")
     .sort({ createdAt: -1 })
-    .select("_id title slug excerpt categories photo  createdAt updatedAt")
+    .select("_id title body slug excerpt categories photo  createdAt updatedAt")
     .exec((err, data) => {
       if (err) {
         return res.json({
@@ -193,7 +193,6 @@ exports.update = (req, res) => {
   const slug = req.params.slug.toLowerCase();
   const { body, title , photo } = req.body;
 
-  console.log(body);
   Blog.findOne({ slug }).exec((err, oldBlog) => {
     if (err) {
       return res.status(400).json({
@@ -202,13 +201,11 @@ exports.update = (req, res) => {
     }
 
 
-
-     
-
       if (body) {
+        oldBlog.body=body;
         oldBlog.excerpt = smartTrim(body, 320, " ", " ...");
-        console.log(oldblog.excerpt);
-        oldBlog.desc = stripHtml(body.substring(0, 160));
+        oldBlog.mdesc = stripHtml(body.substring(0, 160));
+      
       }
       if (title) {
         oldBlog.title = title
