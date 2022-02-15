@@ -4,7 +4,7 @@ const {getAll,addOne,removeOne,getByMenu} =  require('../../controllers/Products
 
 route.get("/get-all-productsubmenu",getAll)
 route.post('/add-one-productsubmenu',addOne)
-route.put('/remove-one-productmenu/:id',removeOne);
+route.delete('/remove-one-productsubmenu/:id',removeOne);
 route.get('/get-submenu-by-menuid/:id',getByMenu)
 
 module.exports =  route;

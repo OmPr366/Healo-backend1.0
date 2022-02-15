@@ -53,7 +53,7 @@ exports.deleteOne = async (req, res) => {
 };
 
 
-//  get all product sub menu find Product Menu
+//  get all product by Product SubMenu
 
 exports.getBySubMenu = async (req, res) => {
   try {
