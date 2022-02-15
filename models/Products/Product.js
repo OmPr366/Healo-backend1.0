@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -6,23 +7,66 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    actualPrice: {
+    prices: [
+      {
+        actualPrice: {
+          type: Number,
+        },
+        sellingPrice: {
+          type: Number,
+        },
+        country: {
+          type: String,
+        },
+        isAvailable: {
+          type: Number,
+        },
+      },
+    ],
+
+    photo: [
+      {
+        type: String,
+      },
+    ],
+    SKU: {
+      type: String,
+    },
+    quantity: {
       type: Number,
     },
-    sellingPrice: {
-      type: Number,
+    category: {
+      type: ObjectId,
+      ref: "ProductCategory",
     },
+    variation: [
+      {
+        type: {
+          type: String,
+        },
+        typeItems: [
+          {
+            name: {
+              type: String,
+            },
+            photo: [
+              {
+                type: String,
+              },
+            ],
+          },
+        ],
+      },
+    ],
     desc: {
       type: String,
       required: true,
       min: 10,
       max: 700,
     },
-    photo: [
-      {
-        type: String,
-      },
-    ],
+    slug:{
+      type: String,
+    }
   },
   { timestamps: true }
 );
