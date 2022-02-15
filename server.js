@@ -20,7 +20,7 @@ const categoryRoutes = require("./routes/category");
 // const userRoutes = require('./routes/user')
 const blogRoutes = require("./routes/blog");
 const imageRoutes = require('./routes/image');
-const about =  require('./routes/aboutus')
+
 const homebanner = require("./routes/homebanner");
 // const homeCateg =  require('./routes/HomePage/homeCateg')
 // const newArrival =  require('./routes/Products/newArrival')
@@ -80,7 +80,7 @@ app.use("/api", categoryRoutes);
 // app.use('/api',userRoutes);
 app.use("/api", blogRoutes);
 app.use('/api',imageRoutes);
-app.use('/api',about);
+
 // app.use('/api',doctorRoute);
 // app.use('/api',testimonialRoute);
 app.use("/api", homebanner);
