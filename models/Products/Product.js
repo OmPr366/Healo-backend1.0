@@ -31,6 +31,7 @@ const ProductSchema = new mongoose.Schema(
     ],
     SKU: {
       type: String,
+      unique: true,
     },
     quantity: {
       type: Number,
@@ -49,6 +50,10 @@ const ProductSchema = new mongoose.Schema(
             name: {
               type: String,
             },
+            priceChange:{
+              type: Number,
+              default:0
+            },
             photo: [
               {
                 type: String,
@@ -64,9 +69,9 @@ const ProductSchema = new mongoose.Schema(
       min: 10,
       max: 700,
     },
-    slug:{
+    slug: {
       type: String,
-    }
+    },
   },
   { timestamps: true }
 );
