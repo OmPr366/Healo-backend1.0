@@ -14,8 +14,10 @@ exports.getAll = async (req, res) => {
 
 // Adding Single Product Sub Menu
 exports.addOne = async (req, res) => {
+
   try {
     const { name, menu } = req.body;
+    console.log(name,menu)
     let slug = slugify(name).toLowerCase();
     const newSubMenu = ProductSubMenu({
       name,
