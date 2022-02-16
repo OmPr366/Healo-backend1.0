@@ -59,6 +59,7 @@ exports.getBySubMenu = async (req, res) => {
   try {
     const subMenuId = req.params.id;
     const response = await ProductCategory.find({ submenu: subMenuId });
+    console.log(response);
     if (response) res.send(response);
   } catch (error) {
     res.status(402).json({ error });
