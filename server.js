@@ -13,13 +13,13 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 // bring routes
 
-const authRoutes = require('./routes/auth');
+const authRoutes = require("./routes/auth");
 const categoryRoutes = require("./routes/category");
 // const productCateg = require('./routes/Products/productCateg')
 // const formRoutes  = require('./routes/form')
 // const userRoutes = require('./routes/user')
 const blogRoutes = require("./routes/blog");
-const imageRoutes = require('./routes/image');
+const imageRoutes = require("./routes/image");
 
 const homebanner = require("./routes/homebanner");
 // const homeCateg =  require('./routes/HomePage/homeCateg')
@@ -32,19 +32,20 @@ const homebanner = require("./routes/homebanner");
 // const faqRoutes = require('./routes/faq')
 // const galleryRoute =  require('./routes/gallery')
 // const emailRoutes = require('./routes/emails');
-const termRoutes = require('./routes/t&c');
+const termRoutes = require("./routes/t&c");
 // const paymentRoutes = require('./routes/payment');
 // const ordersRoutes =  require('./routes/Products/orders')
 // const appointmentRoutes =  require('./routes/appointment')
 const excel = require("./routes/excel");
-const subscriberRoutes =  require('./routes/subscriber')
-const IntroPop =  require('./routes/introPop');
-const AboutCardRoutes =  require("./routes/aboutCard")
-const AboutHeadRoutes =  require("./routes/about/aboutHead")
+const subscriberRoutes = require("./routes/subscriber");
+const IntroPop = require("./routes/introPop");
+const AboutCardRoutes = require("./routes/aboutCard");
+const AboutHeadRoutes = require("./routes/about/aboutHead");
 // Products
-const ProductCategRoutes =  require('./routes/Products/ProductCateg')
-const ProductMenuRoutes =  require('./routes/Products/ProductMenu')
-const ProductSubMenuRoutes =  require('./routes/Products/ProductSubMenu')
+const ProductCategRoutes = require("./routes/Products/ProductCateg");
+const ProductMenuRoutes = require("./routes/Products/ProductMenu");
+const ProductSubMenuRoutes = require("./routes/Products/ProductSubMenu");
+const Product = require("./routes/Products/Product");
 
 // app
 const app = express();
@@ -69,17 +70,16 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // cors
-app.use(cors())
-
+app.use(cors());
 
 // routes middleware
 
-app.use('/api', authRoutes);
+app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
 // app.use('/api', formRoutes);
 // app.use('/api',userRoutes);
 app.use("/api", blogRoutes);
-app.use('/api',imageRoutes);
+app.use("/api", imageRoutes);
 
 // app.use('/api',doctorRoute);
 // app.use('/api',testimonialRoute);
@@ -95,20 +95,21 @@ app.use("/api", homebanner);
 // app.use('/api',productCateg)
 // app.use('/api',galleryRoute)
 // app.use('/api',emailRoutes)
-app.use('/api',termRoutes)
+app.use("/api", termRoutes);
 // app.use('/api',paymentRoutes)
 // app.use('/api',ordersRoutes);
 // app.use('/api',appointmentRoutes);
-app.use('/api',excel);
-app.use('/api',subscriberRoutes);
-app.use('/api',IntroPop);
-app.use('/api',AboutCardRoutes);
-app.use('/api',AboutHeadRoutes)
+app.use("/api", excel);
+app.use("/api", subscriberRoutes);
+app.use("/api", IntroPop);
+app.use("/api", AboutCardRoutes);
+app.use("/api", AboutHeadRoutes);
 
 // Products
-app.use('/api',ProductCategRoutes);
-app.use('/api',ProductMenuRoutes);
-app.use('/api',ProductSubMenuRoutes);
+app.use("/api", ProductCategRoutes);
+app.use("/api", ProductMenuRoutes);
+app.use("/api", ProductSubMenuRoutes);
+app.use("/api", Product);
 
 // port
 const port = process.env.PORT || 8000;
