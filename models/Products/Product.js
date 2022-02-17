@@ -40,29 +40,6 @@ const ProductSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "ProductCategory",
     },
-    variation: [
-      {
-        type: {
-          type: String,
-        },
-        typeItems: [
-          {
-            name: {
-              type: String,
-            },
-            priceChange:{
-              type: Number,
-              default:0
-            },
-            photo: [
-              {
-                type: String,
-              },
-            ],
-          },
-        ],
-      },
-    ],
     desc: {
       type: String,
       required: true,
