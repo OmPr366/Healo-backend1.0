@@ -112,7 +112,7 @@ app.use("/api", ProductSubMenuRoutes);
 app.use("/api", Product);
 
 // port
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 8000;
 app.use("/", (req, res) => {
   res.send("Hello");
 });
