@@ -84,6 +84,27 @@ exports.getBySubMenu = async (req, res) => {
 
 
  
- 
+exports.listSearch = (req, res) => {
+  // console.log(req.query);
+  const { search } = req.query;
+  if (search) {
+    ProductCategory.find(
+      {
+        $or: [
+          { name: { $regex: search, $options: "i" } }
+          
+        ],
+      },
+      (err, blogs) => {
+        if (err) {
+          return res.status(400).json({
+            error: errorHandler(err),
+          });
+        }
+        res.json(blogs);
+      }
+    )
+  }
+};
  
 
