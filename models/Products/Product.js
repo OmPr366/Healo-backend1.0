@@ -40,6 +40,37 @@ const ProductSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "ProductCategory",
     },
+    variation: [
+      {
+        type: {
+          type: String,
+        },
+        typeItems: [
+          {
+            name: {
+              type: String,
+            },
+            actualPrice: {
+              type: Number,
+            },
+            sellingPrice: {
+              type: Number,
+            },
+            country: {
+              type: String,
+            },
+            isAvailable: {
+              type: Number,
+            },
+            photo: [
+              {
+                type: String,
+              },
+            ],
+          },
+        ],
+      },
+    ],
     desc: {
       type: String,
       required: true,
