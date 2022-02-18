@@ -100,14 +100,14 @@ exports.listSearch = (req, res) => {
           { desc: { $regex: search, $options: "i" } },
         ],
       },
-      (err, blogs) => {
+      (err, product) => {
         if (err) {
           return res.status(400).json({
             error: errorHandler(err),
           });
         }
-        res.json(blogs);
+        res.json(product);
       }
-    ).select("-photo -body");
+    )
   }
 };
