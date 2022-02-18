@@ -46,6 +46,7 @@ const ProductCategRoutes = require("./routes/Products/ProductCateg");
 const ProductMenuRoutes = require("./routes/Products/ProductMenu");
 const ProductSubMenuRoutes = require("./routes/Products/ProductSubMenu");
 const Product = require("./routes/Products/Product");
+const PaymentRoute =  require("./routes/payment")
 
 // app
 const app = express();
@@ -104,12 +105,15 @@ app.use("/api", subscriberRoutes);
 app.use("/api", IntroPop);
 app.use("/api", AboutCardRoutes);
 app.use("/api", AboutHeadRoutes);
+app.use("/api",PaymentRoute);
 
 // Products
 app.use("/api", ProductCategRoutes);
 app.use("/api", ProductMenuRoutes);
 app.use("/api", ProductSubMenuRoutes);
 app.use("/api", Product);
+
+
 
 // port
 const port = process.env.PORT || 8000;
