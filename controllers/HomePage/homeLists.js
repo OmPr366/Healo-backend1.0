@@ -1,5 +1,5 @@
-const HomeList = require("../../models/Products/homeLists");
-const { errorHandler } = require("../../helpers/dbErrorHandler");
+const HomeList = require("../../models/homelist");
+
 exports.addOne = (req, res) => {
   const { title, items } = req.body;
   if (!title) res.status(402).json({ message: "Enter Atleast Title" });
@@ -70,7 +70,7 @@ exports.update = (req, res) => {
 exports.getAll = (req, res) => {
   HomeList.find({})
 
-    .populate("items", " name actualPrice sellingPrice images")
+    .populate("items", " name prices images")
     .select("_id  title createdAt updatedAt")
     .exec((err, data) => {
       if (err) {
