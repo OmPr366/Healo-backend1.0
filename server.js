@@ -47,6 +47,7 @@ const ProductMenuRoutes = require("./routes/Products/ProductMenu");
 const ProductSubMenuRoutes = require("./routes/Products/ProductSubMenu");
 const Product = require("./routes/Products/Product");
 const PaymentRoute =  require("./routes/payment")
+const CouponRoute =  require("./routes/Products/Coupons")
 
 // app
 const app = express();
@@ -112,6 +113,7 @@ app.use("/api", ProductCategRoutes);
 app.use("/api", ProductMenuRoutes);
 app.use("/api", ProductSubMenuRoutes);
 app.use("/api", Product);
+app.use("/api",CouponRoute);
 
 
 

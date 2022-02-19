@@ -12,7 +12,7 @@ exports.getAll =  async (req,res)=>{
 
 exports.addOne =  async(req,res)=>{
     try {
-        const {name,discount,totalCoupons} =  req.body();
+        const {name,discount,totalCoupons} =  req.body;
         const newCoupon =  new Coupon({name,discount,totalCoupons})
         const response =  await newCoupon.save();
         if(response)
@@ -27,6 +27,32 @@ exports.addOne =  async(req,res)=>{
 }
 
 
-exports.deleteOne =  (req,res)=>{
+exports.deleteOne = async (req,res)=>{
     
+    try {
+        const id =  req.params.id;
+        const response = await Coupon.findByIdAndRemove(id);
+        if (response) {
+            res.send(response)    
+        }
+    } catch (error) {
+        res.status(402).json({error})
+    }
+}
+
+
+exports.updateOne =  async(req,res)=>{
+
+    try {
+        const id =  req.params.id;
+        const {totalCoupons} =  req.body;
+        const response = await Coupon.findByIdAndUpdate(id,{totalCoupons},{new:true});
+        if (response) {
+            res.send(response)    
+        }
+
+    } catch (error) {
+        res.status(402).json({error})
+    }
+
 }
