@@ -49,6 +49,9 @@ const Product = require("./routes/Products/Product");
 const PaymentRoute =  require("./routes/payment")
 const CouponRoute =  require("./routes/Products/Coupons")
 const homeList =  require('./routes/homeList')
+const toprated =  require('./routes/toprated')
+const trendingProducts =  require('./routes/trendingProducts')
+const topSelling =  require('./routes/topSelling')
 // app
 const app = express();
 
@@ -107,6 +110,9 @@ app.use("/api", IntroPop);
 app.use("/api", AboutCardRoutes);
 app.use("/api", AboutHeadRoutes);
 app.use("/api",PaymentRoute);
+app.use("/api",toprated);
+app.use("/api",trendingProducts);
+app.use("/api",topSelling);
 
 // Products
 app.use("/api", ProductCategRoutes);

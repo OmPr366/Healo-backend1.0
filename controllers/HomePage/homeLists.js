@@ -71,7 +71,7 @@ exports.getAll = (req, res) => {
   HomeList.find({})
 
     .populate("items", " name prices images")
-    .select("_id  title createdAt updatedAt")
+    .select("_id  title items createdAt updatedAt")
     .exec((err, data) => {
       if (err) {
         res.status(402).json({ error: "Something went wrong" });
