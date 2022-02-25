@@ -1,9 +1,11 @@
 const express = require ('express')
-const {addOne,editSingle,getAll,removeOne,removefromlist,read,update} = require('../controllers/HomePage/homeLists')
+const {addOne,editSingle,getAll,removeOne,removefromlist,read,update, getAllexcept3} = require('../controllers/HomePage/homeLists')
 
 const route =  express.Router();
 
 route.get('/getHomeList',getAll);
+route.get('/get-except-list',getAllexcept3);
+
 route.post('/addHomeList',addOne);
 route.put('/editHomeList/:id',editSingle);
 route.put('/updateHomeList/:id',update);

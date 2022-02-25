@@ -70,7 +70,19 @@ exports.update = (req, res) => {
 exports.getAll = (req, res) => {
   HomeList.find({})
 
-    .populate("items", " name prices images")
+    .populate("items", " name prices photo")
+    .select("_id  title items createdAt updatedAt")
+    .exec((err, data) => {
+      if (err) {
+        res.status(402).json({ error: "Something went wrong" });
+      }
+      res.json(data);
+    });
+};
+exports.getAllexcept3 = (req, res) => {
+  HomeList.find({$nor:[{_id:"6211e787f8abd30b5806ab01"},{_id: "6211e7bcf8abd30b5806ab07"},{_id:"6211e7a3f8abd30b5806ab04"}]})
+
+    .populate("items", " name prices photo")
     .select("_id  title items createdAt updatedAt")
     .exec((err, data) => {
       if (err) {
@@ -84,7 +96,7 @@ exports.read = (req, res) => {
   console.log(id);
   HomeList.findById(id)
 
-    .populate("items", " name actualPrice sellingPrice images")
+    .populate("items", " name prices photo")
     .select("_id  title createdAt updatedAt")
     .exec((err, data) => {
       if (err) {

@@ -52,6 +52,7 @@ const homeList =  require('./routes/homeList')
 const toprated =  require('./routes/toprated')
 const trendingProducts =  require('./routes/trendingProducts')
 const topSelling =  require('./routes/topSelling')
+const recentlyadded =  require('./routes/recentlyadded')
 // app
 const app = express();
 
@@ -120,6 +121,7 @@ app.use("/api", ProductMenuRoutes);
 app.use("/api", ProductSubMenuRoutes);
 app.use("/api", Product);
 app.use("/api",CouponRoute);
+app.use("/api",recentlyadded);
 
 
 
