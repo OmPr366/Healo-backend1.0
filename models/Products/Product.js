@@ -50,18 +50,26 @@ const ProductSchema = new mongoose.Schema(
             name: {
               type: String,
             },
-            actualPrice: {
-              type: Number,
-            },
-            sellingPrice: {
-              type: Number,
-            },
-            country: {
-              type: String,
-            },
-            isAvailable: {
-              type: Number,
-            },
+            prices: [
+              {
+                actualPrice: {
+                  type: Number,
+                },
+                sellingPrice: {
+                  type: Number,
+                },
+                country: {
+                  type: String,
+                },
+                quantity:{
+                  type: Number,
+                },
+                isAvailable: {
+                  type: Number,
+                },
+              },
+            ],
+
             photo: [
               {
                 type: String,

@@ -48,7 +48,7 @@ const ProductSubMenuRoutes = require("./routes/Products/ProductSubMenu");
 const Product = require("./routes/Products/Product");
 const PaymentRoute =  require("./routes/payment")
 const CouponRoute =  require("./routes/Products/Coupons")
-const homeList =  require('./routes/homeList')
+// const homeList =  require('./routes/homeList')
 const toprated =  require('./routes/toprated')
 const trendingProducts =  require('./routes/trendingProducts')
 const topSelling =  require('./routes/topSelling')
@@ -92,7 +92,7 @@ app.use("/api", imageRoutes);
 app.use("/api", homebanner);
 // app.use('/api',homeCateg);
 // app.use('/api',newArrival);
-app.use('/api',homeList);
+// app.use('/api',homeList);
 
 // app.use('/api',singleProduct);
 // app.use('/api',userCard);
