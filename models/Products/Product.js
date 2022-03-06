@@ -65,7 +65,7 @@ const ProductSchema = new mongoose.Schema(
                   type: Number,
                 },
                 isAvailable: {
-                  type: Number,
+                  type: String,
                 },
               },
             ],

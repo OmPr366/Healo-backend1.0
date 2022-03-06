@@ -18,7 +18,7 @@ route.post("/payment", async (req, res) => {
   const currency = "INR";
 
   const options = {
-    amount: totalAmount * 100,
+    amount: 12 * 100,
     currency,
     receipt: shortid.generate(),
     payment_capture,
