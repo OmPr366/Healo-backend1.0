@@ -111,3 +111,18 @@ exports.listSearch = (req, res) => {
     )
   }
 };
+
+exports.singleProduct = async (req,res)=>{
+  const { id } = req.params;
+  try {
+    const response = await Product.findById(id)
+    if (response) {
+      return res.send(response);
+    }else {
+      res.send(response.toString())
+    }
+  } catch (error) {
+    res.status(402).json({ error });
+  }
+
+}

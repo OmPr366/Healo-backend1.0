@@ -4,8 +4,8 @@ const shortid = require("shortid");
 const Razorpay = require("razorpay");
 
 const razorpay = new Razorpay({
-  key_id: "rzp_test_7qp5GXdM4UPlu8",
-  key_secret: "4LDxqm8h6RqshiDaw2kwmZc4",
+  key_id: "rzp_test_fr5VUxEYxckIc6",
+  key_secret: "fuEWgoLPoG5ADNoX9KygEc54",
 });
 
 const route = express.Router();
@@ -18,7 +18,7 @@ route.post("/payment", async (req, res) => {
   const currency = "INR";
 
   const options = {
-    amount: 12 * 100,
+    amount: totalAmount*100,
     currency,
     receipt: shortid.generate(),
     payment_capture,
@@ -67,5 +67,7 @@ route.post("/is-order-complete", (req, res) => {
 	  res.send(err);
   })
 });
+
+
 
 module.exports = route;
