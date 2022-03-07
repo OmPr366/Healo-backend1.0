@@ -24,7 +24,7 @@ const imageRoutes = require("./routes/image");
 const homebanner = require("./routes/homebanner");
 // const homeCateg =  require('./routes/HomePage/homeCateg')
 // const newArrival =  require('./routes/Products/newArrival')
-// const homeList =  require('./routes/HomePage/homeList')
+const homeList =  require('./routes/homelist')
 
 // const singleProduct =  require('./routes/Products/singleProduct')
 // const userCard = require('./routes/Products/userCart')
@@ -53,6 +53,7 @@ const toprated =  require('./routes/toprated')
 const trendingProducts =  require('./routes/trendingProducts')
 const topSelling =  require('./routes/topSelling')
 const recentlyadded =  require('./routes/recentlyadded')
+const popularProduct =  require('./routes/Products/PopularProduct')
 // app
 const app = express();
 
@@ -91,7 +92,7 @@ app.use("/api", imageRoutes);
 app.use("/api", homebanner);
 // app.use('/api',homeCateg);
 // app.use('/api',newArrival);
-// app.use('/api',homeList);
+app.use('/api',homeList);
 
 // app.use('/api',singleProduct);
 // app.use('/api',userCard);
@@ -121,6 +122,8 @@ app.use("/api", ProductSubMenuRoutes);
 app.use("/api", Product);
 app.use("/api",CouponRoute);
 app.use("/api",recentlyadded);
+app.use("/api",popularProduct)
+
 
 
 
