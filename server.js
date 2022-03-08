@@ -54,6 +54,8 @@ const trendingProducts =  require('./routes/trendingProducts')
 const topSelling =  require('./routes/topSelling')
 const recentlyadded =  require('./routes/recentlyadded')
 const popularProduct =  require('./routes/Products/PopularProduct')
+const contact =  require('./routes/contact');
+const allOrders =  require('./routes/allOrders')
 // app
 const app = express();
 
@@ -106,6 +108,7 @@ app.use("/api", termRoutes);
 // app.use('/api',ordersRoutes);
 // app.use('/api',appointmentRoutes);
 app.use("/api", excel);
+app.use("/api",contact);
 app.use("/api", subscriberRoutes);
 app.use("/api", IntroPop);
 app.use("/api", AboutCardRoutes);
@@ -123,6 +126,7 @@ app.use("/api", Product);
 app.use("/api",CouponRoute);
 app.use("/api",recentlyadded);
 app.use("/api",popularProduct)
+app.use("/api",allOrders);
 
 
 
