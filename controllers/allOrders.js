@@ -1,15 +1,13 @@
-
 const AllOrders = require("../models/allorders");
-
 
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
 // exports.read = (req, res) => {
 //     HomeList.findById("6211e7bcf8abd30b5806ab07")
 //   //6211e7bcf8abd30b5806ab07
-    // .populate("items", " name prices photo desc")
-    // .select("_id  title items  createdAt updatedAt")
-    
+// .populate("items", " name prices photo desc")
+// .select("_id  title items  createdAt updatedAt")
+
 //     .exec((err, data) => {
 //         if (err) {
 //           return res.json({
@@ -19,7 +17,7 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 //         res.json(data);
 //       });
 //   };
-  
+
 //   exports.update = (req, res) => {
 //     HomeList.findByIdAndUpdate("6211e7bcf8abd30b5806ab07", { new: true }).exec(
 //       (err, oldTerms) => {
@@ -28,9 +26,9 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 //             error: errorHandler(err),
 //           });
 //         }
-  
+
 //         const { items, title } = req.body;
-  
+
 //         oldTerms.items = items;
 //         oldTerms.title = title;
 //         oldTerms.save((err, result) => {
@@ -39,49 +37,45 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 //               err,
 //             });
 //           }
-  
+
 //           res.json(result);
 //         });
 //       }
 //     );
 //   };
-exports.read =  async(req,res)=>{
-    try {
-        const response =  await AllOrders.find().populate("items")
-        if(response)
-        {
-            res.send(response);
-        }
-    } catch (error) {
-        
+exports.read = async (req, res) => {
+  try {
+    const response = await AllOrders.find();
+    if (response) {
+      res.send(response);
     }
-}
-exports.getOrdersByUsers =  async(req,res)=>{
-    try {
-        
-    } catch (error) {
-        
-    }
-}
+  } catch (error) {}
+};
+exports.getOrdersByUsers = async (req, res) => {
+  try {
+    const user = req.params.id;
 
-  exports.add  = async (req,res)=>{
-
-    try {
-        const {items,user} =  req.body;
-        const newOrders =  await AllOrders({
-            items,
-            user
-        })
-
-        const response  =  await newOrders.save();
-        if(response)
-        {
-            return res.send(response)
-        }
-    } catch (error) {
-        res.status(400).send(error)
-    }
-
+    const response = await AllOrders.find({ user });
+    if (response) return res.send(response);
+  } catch (error) {
+    res.status(401).send(error);
   }
-  
-  
+};
+
+exports.add = async (req, res) => {
+  try {
+    const { items, user,delhiveryId } = req.body;
+    const newOrders = await AllOrders({
+      items,
+      user,
+      delhiveryId,
+    });
+
+    const response = await newOrders.save();
+    if (response) {
+      return res.send(response);
+    }
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};

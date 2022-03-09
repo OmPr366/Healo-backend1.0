@@ -1,19 +1,15 @@
 const mongoose = require("mongoose");
-const {ObjectId} = mongoose.Schema
+const { ObjectId } = mongoose.Schema;
 
 const allOrdersSchema = new mongoose.Schema(
   {
-    
-    items: [
-      {
-       type : ObjectId,
-       ref :'Product',
-      
-      },
-    ],
-    user:{
-       type : ObjectId,
-       ref:'User'
+    items: [],
+    user: {
+      type: ObjectId,
+      ref: "User",
+    },
+    delhiveryId:{
+      type:String
     }
   },
   { timestamps: true }
