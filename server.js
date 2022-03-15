@@ -38,6 +38,7 @@ const termRoutes = require("./routes/t&c");
 // const appointmentRoutes =  require('./routes/appointment')
 const excel = require("./routes/excel");
 const subscriberRoutes = require("./routes/subscriber");
+const subscribeSectionRoutes =  require("./routes/SubscribeSection")
 const IntroPop = require("./routes/introPop");
 const AboutCardRoutes = require("./routes/aboutCard");
 const AboutHeadRoutes = require("./routes/about/aboutHead");
@@ -88,6 +89,7 @@ app.use("/api", categoryRoutes);
 // app.use('/api',userRoutes);
 app.use("/api", blogRoutes);
 app.use("/api", imageRoutes);
+app.use("/api",subscribeSectionRoutes)
 
 // app.use('/api',doctorRoute);
 // app.use('/api',testimonialRoute);
