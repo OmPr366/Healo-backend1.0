@@ -9,6 +9,6 @@ router.get('/get-topSelling', read);
 
 
 
-//auth user blog crud
+//auth user blog crud i
 
 module.exports=router;
